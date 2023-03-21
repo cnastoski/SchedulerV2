@@ -13,6 +13,9 @@ const createWindow = () => {
     height: 600,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
+      nodeIntegration: true, /* set to true so modules like fs can be imported into scripts
+                                 minor security issue, only when using untrusted third party scripts */
+      contextIsolation: false
     },
   });
 
