@@ -39,3 +39,13 @@ body {
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
 }
+
+.task {
+  font-weight:bold;
+}
+
+.task-sub {
+  font-style: italic;
+  font-size: 12px;
+}
+
