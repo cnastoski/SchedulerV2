@@ -1,13 +1,17 @@
 import {renderTasks} from "./tasks.js";
+import { renderCalendar } from "./calendar.js";
 
 const fs = require('fs')
 const path = require('path')
+
 
 function renderHome () {
     const body = document.getElementById("body-container");
     fs.readFile(path.resolve(__dirname, "main.html"), (err, data) => {
         body.innerHTML = data
+        renderCalendar();
     })
+
 }
 
 function renderSettings () {
@@ -22,7 +26,7 @@ function renderTasksPage () {
     const body = document.getElementById("body-container");
     fs.readFile(path.resolve(__dirname, "tasks.html"), (err, data) => {
         body.innerHTML = data
-        renderTasks(document)
+        renderTasks()
         // fs.readFile is an async function,
         // so renderTasks() gets run only during the callback
     })
