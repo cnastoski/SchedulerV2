@@ -26,7 +26,7 @@ function renderTasksPage () {
     const body = document.getElementById("body-container");
     fs.readFile(path.resolve(__dirname, "tasks.html"), (err, data) => {
         body.innerHTML = data
-        renderTasks(document)
+        renderTasks()
         // fs.readFile is an async function,
         // so renderTasks() gets run only during the callback
     })

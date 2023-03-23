@@ -6,8 +6,7 @@ const path = require('path')
  *
  */
 
-export function renderTasks(document) {
-    // pass in document instead of using the document global
+export function renderTasks() {
     const tasksBody = document.getElementById("tasks")
 
     // read tasks file, will most likely get replaced by database lookup

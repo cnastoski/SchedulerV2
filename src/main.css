@@ -1,12 +1,3 @@
-body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
-      Arial, sans-serif;
-    /* left is same as the width of the sidenav */
-    margin: auto auto auto 160px;
-    padding: 2rem;
-    height: 100%;
-  }
-
 /*calendar css */
 #calendar{
     display: grid;
