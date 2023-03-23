@@ -48,31 +48,3 @@ body {
   font-style: italic;
   font-size: 12px;
 }
-
-
-/*calendar css */
-#calendar{
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  grid-template-rows: repeat(5, 1fr);
-  height: 90vh;
-  margin: 0;
-}
-
-#prevmonth{
-  float: right;
-}
-
-.day{
-  border: 1px solid lightgray;
-  text-align: center;
-  padding-top: 5px;
-  font-size: 12px;
-  cursor: pointer;
-  transition: background-color 200ms, color 200ms;
-}
-
-#daynames{
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-}
