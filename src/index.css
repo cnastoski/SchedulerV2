@@ -40,6 +40,16 @@ body {
   .sidenav a {font-size: 18px;}
 }
 
+.task {
+  font-weight:bold;
+}
+
+.task-sub {
+  font-style: italic;
+  font-size: 12px;
+}
+
+
 /*calendar css */
 #calendar{
   display: grid;
