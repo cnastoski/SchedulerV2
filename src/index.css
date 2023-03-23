@@ -3,8 +3,8 @@ body {
     Arial, sans-serif;
   /* left is same as the width of the sidenav */
   margin: auto auto auto 160px;
-  max-width: 38rem;
   padding: 2rem;
+  height: 100%;
 }
 
 /* The sidebar menu */
@@ -38,4 +38,23 @@ body {
 @media screen and (max-height: 450px) {
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
+}
+
+/*calendar css */
+#calendar{
+
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  height: 90vh;
+  margin: 0;
+}
+
+.day{
+  border: 1px solid lightgray;
+  text-align: center;
+  padding-top: 5px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background-color 200ms, color 200ms;
 }
