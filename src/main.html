@@ -2,23 +2,28 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <title>Hello World!</title>
+        <title></title>
         <!-- <link rel="stylesheet" href="main.css" /> -->
       </head>
     <body>
         <div id="main-container">
-            <div id="monthpicker">
-                <button type="button" name="prevmonth">prev</button> 
-                <button type="button" name="nextmonth">next</button> 
+            <div id="monthbar">
+                <div id="leftmonthbutton">
+                  <button type="button" class="monthbuttons">prev</button>   
+                </div>
+                <div id="month">January</div>
+                <div id="rightmonthbutton">
+                    <button type="button" class="monthbuttons">next</button> 
+                </div>
             </div>
             <div id="daynames">
-                <div>Monday</div>
-                <div>Tuesday</div>
-                <div>Wednesday</div>
-                <div>Thurs</div>
-                <div>Friday</div>
-                <div>Saturday</div>
-                <div>Sunday</div>
+                <div class="dayname">Monday</div>
+                <div class="dayname">Tuesday</div>
+                <div class="dayname">Wednesday</div>
+                <div class="dayname">Thurs</div>
+                <div class="dayname">Friday</div>
+                <div class="dayname">Saturday</div>
+                <div class="dayname">Sunday</div>
             </div>
             <div id="calendar"></div>
         </div>
