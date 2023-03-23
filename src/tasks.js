@@ -14,7 +14,6 @@ export function renderTasks(document) {
     // easy to port to database, both functions will be callbacks
     fs.readFile(path.resolve(__dirname, "tasks.json"), (err, data) => {
         let html = ""
-        console.log(JSON.parse(data))
         JSON.parse(data).forEach((task) => {
             html += "<div class='task'>" + task.name + "<div class='task-sub'>"
                 + task.date + "</div></div><br>"
