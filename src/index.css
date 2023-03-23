@@ -42,12 +42,15 @@ body {
 
 /*calendar css */
 #calendar{
-
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   grid-template-rows: repeat(5, 1fr);
   height: 90vh;
   margin: 0;
+}
+
+#prevmonth{
+  float: right;
 }
 
 .day{
@@ -57,4 +60,9 @@ body {
   font-size: 12px;
   cursor: pointer;
   transition: background-color 200ms, color 200ms;
+}
+
+#daynames{
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
 }
