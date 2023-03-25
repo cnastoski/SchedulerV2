@@ -1,5 +1,5 @@
 import {renderTasks} from "./tasks.js";
-import { renderCalendar } from "./calendar.js";
+import { nextMonthHandler, prevMonthHandler, renderCalendar } from "./calendar.js";
 
 const fs = require('fs')
 const path = require('path')
@@ -9,7 +9,22 @@ function renderHome () {
     const body = document.getElementById("body-container");
     fs.readFile(path.resolve(__dirname, "main.html"), (err, data) => {
         body.innerHTML = data
-        renderCalendar();
+
+        let selectedDate = null;
+        const date = new Date();
+
+        renderCalendar(date, selectedDate);
+
+        const prevBtn = document.querySelector("#prev-btn");
+        const nextBtn = document.querySelector("#next-btn");
+
+        prevBtn.addEventListener('click', () => {
+            prevMonthHandler();
+        });
+        
+        nextBtn.addEventListener('click', () => {
+            nextMonthHandler();
+        });
     })
 
 }

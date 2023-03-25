@@ -1,47 +1,113 @@
 /*calendar css */
+body{
+  overflow: auto;
+}
+
+body.is-changing {
+  overflow-y: hidden;  /* hide the scrollbar when content is changing */
+  overflow-x: hidden;
+}
+
+#main-container{
+  background-image: linear-gradient(to bottom right, rgba(20,30,81), rgba(68,96,130));
+  -webkit-box-shadow: 0 0 10px #292238;
+  box-shadow: 0 0 10px #0f0c2f;
+  border-radius: 4px
+}
+
 #calendar{
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    grid-template-rows: repeat(5, 1fr);
-    height: 80vh;
-    margin: 0;
-  }
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  height: 80vh;
+}
 
-  .day{
-    border: 1px solid lightgray;
-    text-align: center;
-    padding-top: 5px;
-    font-size: 12px;
-    cursor: pointer;
-    transition: background-color 200ms, color 200ms;
-  }
+.day{
+  color: white;
+  font-family: Dosis;
+  text-align: center;
+  padding-top: 5px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background-color 200ms, color 200ms;
+  border-radius: 4px
+}
 
-  
-  #daynames{
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    padding-bottom: 1vh;
-  }
+.day:hover{
+  box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.1);
+}
 
-  .weekday{
-    text-align: center;
-  }
+.today{
+  background-color: rgba(59, 82, 183, 0.852);
+}
 
-  #header{
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    width: 100%;
-    padding-bottom: 10px;
-  }
+.selected{
+  background-color: rgba(94, 111, 186, 0.852);
+}
 
-  #leftmonthbutton{
-    text-align: left;
-  }
 
-  #rightmonthbutton{
-    text-align: right;
-  }
+#daynames{
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  padding-bottom: 1vh;
+}
 
-  #monthyear{
-    text-align: center;
-  }
+.weekday{
+  text-align: center;
+  color: whitesmoke;
+  font-family: Dosis;
+  padding-bottom: 2rem;
+  padding-top: 1rem;
+}
+
+#header{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: antiquewhite;
+  font-family: Dosis;
+}
+
+.monthbuttons{
+  border-radius: 4px;
+  font-family: Dosis;
+  width: 50px;
+}
+
+.monthbuttons:hover{
+  filter: brightness(85%);
+}
+
+.monthbuttons:active{
+  transform: translateY(2px);
+}
+
+#leftmonthbutton{
+  padding-left: 10px;
+  text-align: left;
+}
+
+#rightmonthbutton{
+  padding-right: 10px;
+  text-align: right;
+}
+
+#monthyear{
+  text-align: center;
+  font-size: large;
+}
+
+/* Sweep animation */
+.fade-enter-active{
+  transition: transform 0.5s ease;
+}
+
+.fade-enter-right{
+  transform: translateX(-100%);
+}
+
+.fade-enter-left{
+  transform: translateX(100%);
+}
