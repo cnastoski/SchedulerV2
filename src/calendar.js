@@ -19,16 +19,7 @@ export function renderCalendar() {
     let daysFromPrevMonth = firstDayOfMonth;
     let daysFromNextMonth = 0;
 
-    if(daysInMonth + daysFromPrevMonth > 35){
-        daysFromNextMonth = 42 - (daysInMonth + daysFromPrevMonth);
-    }
-    else if (daysInMonth + daysFromPrevMonth < 35){
-        daysFromNextMonth = 35 - (daysInMonth + daysFromPrevMonth);
-    }
-
-    if (firstDayOfMonth === 0){
-        daysFromPrevMonth = 7;
-    }
+    daysFromNextMonth = 42 - (daysInMonth + daysFromPrevMonth);
 
     let daysHTML = '';
 
