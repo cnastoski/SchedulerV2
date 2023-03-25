@@ -1,6 +1,9 @@
 const { app, BrowserWindow } = require('electron');
 const path = require('path');
 
+//remove the security warning on startup
+process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true';
+
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) {
   app.quit();
