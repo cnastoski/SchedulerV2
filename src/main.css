@@ -8,7 +8,6 @@
   grid-template-columns: repeat(7, 1fr);
   grid-template-rows: repeat(6, 1fr);
   height: 80vh;
-  margin: 0;
   -webkit-box-shadow: 0 0 10px #292238;
         box-shadow: 0 0 10px #0f0c2f;
 }
@@ -25,15 +24,15 @@
 }
 
 .day:hover{
-  background-color: rgba(20, 30, 81);
+  box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.1);
 }
 
 .today{
-  background-color: lightblue;
+  background-color: rgba(59, 82, 183, 0.852);
 }
 
 .selected{
-  background-color: rgb(71, 53, 82);
+  background-color: rgba(94, 111, 186, 0.852);
 }
 
 
@@ -46,14 +45,31 @@
 .weekday{
   text-align: center;
   color: whitesmoke;
+  font-family: Dosis;
 }
 
 #header{
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   width: 100%;
+  padding-top: 10px;
   padding-bottom: 10px;
   color: antiquewhite;
+  font-family: Dosis;
+}
+
+.monthbuttons{
+  border-radius: 4px;
+  font-family: Dosis;
+  width: 50px;
+}
+
+.monthbuttons:hover{
+  filter: brightness(85%);
+}
+
+.monthbuttons:active{
+  transform: translateY(2px);
 }
 
 #leftmonthbutton{
@@ -68,4 +84,5 @@
 
 #monthyear{
   text-align: center;
+  font-size: large;
 }
