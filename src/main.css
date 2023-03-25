@@ -15,6 +15,7 @@
     cursor: pointer;
     transition: background-color 200ms, color 200ms;
   }
+
   
   #daynames{
     display: grid;
@@ -26,7 +27,7 @@
     text-align: center;
   }
 
-  #monthbar{
+  #header{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     width: 100%;
@@ -41,6 +42,6 @@
     text-align: right;
   }
 
-  #month{
+  #monthyear{
     text-align: center;
   }
