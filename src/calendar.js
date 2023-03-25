@@ -1,7 +1,7 @@
 let selectedDate = null;
 const date = new Date();
 
-export function renderCalendar() {
+export function renderCalendar(date, selectedDate) {
     const monthyear = document.querySelector("#monthyear");
     const days = document.querySelector("#calendar");
 
@@ -40,7 +40,7 @@ export function renderCalendar() {
           daysHTML += `<div class="day selected">${i}</div>`;
         } 
         else {
-          daysHTML += `<div class="day">${i}</div>`;
+          daysHTML += `<div class="day current-month">${i}</div>`;
         }
     }
 
@@ -123,7 +123,7 @@ function isToday(date) {
 }
 
 
-function isSelected(date) {
+export function isSelected(date, selectedDate) {
     if (selectedDate == null) {
     return false;
     }

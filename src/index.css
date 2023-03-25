@@ -1,5 +1,10 @@
 @import "main.css";
 
+@font-face {
+  font-family: 'Dosis';
+  src: url('assets/fonts/Dosis-VariableFont_wght.ttf');
+}
+
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
     Arial, sans-serif;
