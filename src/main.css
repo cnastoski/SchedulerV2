@@ -2,7 +2,7 @@
 #calendar{
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    grid-template-rows: repeat(5, 1fr);
+    grid-template-rows: repeat(6, 1fr);
     height: 80vh;
     margin: 0;
   }

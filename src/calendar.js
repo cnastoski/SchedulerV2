@@ -1,15 +1,12 @@
-
 let selectedDate = null;
+const date = new Date();
 
 export function renderCalendar() {
     const monthyear = document.querySelector("#monthyear");
     const days = document.querySelector("#calendar");
 
-
     renderWeekdays();
  
-    const date = new Date();
-
     const year = date.getFullYear();
     const month = date.getMonth();
 
@@ -63,16 +60,64 @@ export function renderCalendar() {
 
     days.innerHTML = daysHTML;
 
+    const allDays = days.querySelectorAll('div');
+
+    allDays.forEach((day) => {
+        day.addEventListener('click', () => {
+          const dayNum = parseInt(day.innerHTML);
+    
+          if (isNaN(dayNum)) {
+            return;
+          }
+    
+          if (selectedDate != null) {
+            selectedDate.classList.remove('selected');
+          }
+    
+          day.classList.add('selected');
+          selectedDate = day;
+        });
+      });
+
 }
 
-export function renderWeekdays(){
+
+export function prevMonthHandler(){
+    const month = date.getMonth();
+  
+    if (month === 0) {
+      date.setFullYear(date.getFullYear() - 1);
+      date.setMonth(11);
+    } else {
+      date.setMonth(month - 1);
+    }
+  
+    renderCalendar(date);
+}
+
+export function nextMonthHandler(){
+    const month = date.getMonth();
+    
+    if (month === 11) {
+        date.setFullYear(date.getFullYear() + 1);
+        date.setMonth(0);
+    } else {
+        date.setMonth(month + 1);
+    }
+    
+    renderCalendar(date);
+}
+
+function renderWeekdays(){
     const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
     const weekdaydiv = document.querySelector("#daynames")
 
+    let weekdayhtml = ''
     for (let i in weekday){
-        weekdaydiv.insertAdjacentHTML("beforeend", `<div class="weekday">${weekday[i]}</div>`)
+        weekdayhtml += `<div class="weekday">${weekday[i]}</div>`
     }
 
+    weekdaydiv.innerHTML = weekdayhtml;
 }
 
 function isToday(date) {
