@@ -75,17 +75,6 @@ export function renderWeekdays(){
 
 }
 
-export function renderDays(){
-    //TODO: change where the day numbers are rendered according to the month and weekday
-    const calendar = document.querySelector("#calendar")
-
-    for (let day = 1; day <= 35; day++) {
-
-        calendar.insertAdjacentHTML("beforeend", `<div class="day">${day}</div>`);
-    }
-}
-
-
 function isToday(date) {
     const today = new Date();
   
