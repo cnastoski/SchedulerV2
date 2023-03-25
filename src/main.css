@@ -1,6 +1,18 @@
 /*calendar css */
+body{
+  overflow: auto;
+}
+
+body.is-changing {
+  overflow-y: hidden;  /* hide the scrollbar when content is changing */
+  overflow-x: hidden;
+}
+
 #main-container{
-  background-image: linear-gradient(to bottom right, rgba(20,30,81), rgba(68,96,130))
+  background-image: linear-gradient(to bottom right, rgba(20,30,81), rgba(68,96,130));
+  -webkit-box-shadow: 0 0 10px #292238;
+  box-shadow: 0 0 10px #0f0c2f;
+  border-radius: 4px
 }
 
 #calendar{
@@ -8,19 +20,17 @@
   grid-template-columns: repeat(7, 1fr);
   grid-template-rows: repeat(6, 1fr);
   height: 80vh;
-  -webkit-box-shadow: 0 0 10px #292238;
-        box-shadow: 0 0 10px #0f0c2f;
 }
 
 .day{
   color: white;
   font-family: Dosis;
-  border: 1px solid lightgray;
   text-align: center;
   padding-top: 5px;
   font-size: 15px;
   cursor: pointer;
   transition: background-color 200ms, color 200ms;
+  border-radius: 4px
 }
 
 .day:hover{
@@ -46,6 +56,8 @@
   text-align: center;
   color: whitesmoke;
   font-family: Dosis;
+  padding-bottom: 2rem;
+  padding-top: 1rem;
 }
 
 #header{
@@ -85,4 +97,17 @@
 #monthyear{
   text-align: center;
   font-size: large;
+}
+
+/* Sweep animation */
+.fade-enter-active{
+  transition: transform 0.5s ease;
+}
+
+.fade-enter-right{
+  transform: translateX(-100%);
+}
+
+.fade-enter-left{
+  transform: translateX(100%);
 }

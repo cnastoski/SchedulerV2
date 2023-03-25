@@ -1,5 +1,9 @@
+const body = document.querySelector('body');
+
 let selectedDate = null;
 const date = new Date();
+
+
 
 export function renderCalendar(date, selectedDate) {
     const monthyear = document.querySelector("#monthyear");
@@ -70,6 +74,13 @@ export function renderCalendar(date, selectedDate) {
         });
       });
 
+      setTimeout(function () {
+        days.classList.remove("fade-enter-right");
+        days.classList.remove("fade-enter-left");
+        days.classList.remove("fade-enter-active");
+      }, 500);
+
+      body.classList.remove('is-changing');
 }
 
 
@@ -84,6 +95,12 @@ export function prevMonthHandler(){
     }
   
     renderCalendar(date);
+
+    const days = document.querySelector("#calendar");
+    days.classList.add("fade-enter-left");
+    days.classList.add("fade-enter-active");
+    body.classList.add('is-changing');
+
 }
 
 export function nextMonthHandler(){
@@ -97,6 +114,12 @@ export function nextMonthHandler(){
     }
     
     renderCalendar(date);
+
+    const days = document.querySelector("#calendar");
+    days.classList.add("fade-enter-right");
+    days.classList.add("fade-enter-active");
+    body.classList.add('is-changing');
+
 }
 
 function renderWeekdays(){
@@ -138,6 +161,7 @@ export function isSelected(date, selectedDate) {
     selectedYear === date.getFullYear()
     );
 }
+
 
 const months = [
     'January',
