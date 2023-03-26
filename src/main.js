@@ -1,5 +1,13 @@
-const { app, BrowserWindow } = require('electron');
+const electron = require("electron");
+const { app, BrowserWindow, Menu } = require('electron');
 const path = require('path');
+
+//code for the context menu
+const MenuItem = electron.MenuItem
+
+//enable remote module
+const remoteMain = require('@electron/remote/main');
+remoteMain.initialize();
 
 //remove the security warning on startup
 process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true';
@@ -18,9 +26,12 @@ const createWindow = () => {
       preload: path.join(__dirname, 'preload.js'),
       nodeIntegration: true, /* set to true so modules like fs can be imported into scripts
                                  minor security issue, only when using untrusted third party scripts */
-      contextIsolation: false
+      contextIsolation: false,
+      enableRemoteModule: true
     },
   });
+
+  remoteMain.enable(mainWindow.webContents);
 
   // and load the index.html of the app.
   mainWindow.loadFile(path.join(__dirname, 'index.html'));
@@ -32,7 +43,19 @@ const createWindow = () => {
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-app.on('ready', createWindow);
+app.on('ready', function(){
+  createWindow();
+
+  const template=[
+    {
+      label: 'demo'
+    }
+  ]
+  //const menu = Menu.buildFromTemplate(template)
+  //Menu.setApplicationMenu(menu)
+  //const ctxMenu = new Menu();
+
+});
 
 // Quit when all windows are closed, except on macOS. There, it's common
 // for applications and their menu bar to stay active until the user quits
