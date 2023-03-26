@@ -1,3 +1,4 @@
+const Sortable = require('sortablejs')
 const fs = require('fs')
 const path = require('path')
 
@@ -13,14 +14,40 @@ export function renderTasks() {
     // easy to port to database, both functions will be callbacks
     fs.readFile(path.resolve(__dirname, "tasks.json"), (err, data) => {
         let html = ""
-        JSON.parse(data).forEach((task) => {
-            html += "<div class='task'>" + task.name + "<div class='task-sub'>"
-                + task.date + "</div></div><br>"
+        let arr = JSON.parse(data)
+        for (let i = 0; i < arr.length; i++) {
+            html += "<div class='task' draggable='true'>" + arr[i].name + "<div class='task-sub'>"
+                + arr[i].date + "</div></div>"
+        }
+        tasksBody.innerHTML = html
+
+        // these say "unused" but they are very much used!
+        let sortableTasks = Sortable.create(tasksBody, {
+            onSort: (evt) => {
+                saveTasks()
+            }
         })
 
+    })
+}
 
-        tasksBody.innerHTML = html
+function saveTasks() {
+    let objects = []
+    let tasks = [...document.getElementsByClassName("task")]
+
+    tasks.forEach((task) => {
+        let text = task.innerText.split("\n")
+
+        objects.push({
+            "name" : text[0],
+            "date" : text[1]
+        })
     })
 
+    fs.writeFile('./src/tasks.json', JSON.stringify(objects), (err) =>{
+        if (err) throw err
+    })
 }
+
+
 

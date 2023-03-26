@@ -20,7 +20,8 @@
   "dependencies": {
     "@electron/remote": "^2.0.9",
     "electron-squirrel-startup": "^1.0.0",
-    "fullcalendar": "^6.1.5"
+    "fullcalendar": "^6.1.5",
+    "sortablejs": "^1.15.0"
   },
   "devDependencies": {
     "@electron-forge/cli": "^6.0.5",
