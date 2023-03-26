@@ -1,8 +1,22 @@
+const remote = require('@electron/remote');
+const {Menu, MenuItem} = remote;
+
 const body = document.querySelector('body');
 
 let selectedDate = null;
 const date = new Date();
 
+
+const contextMenuTemplate = [
+    {
+      label: 'Add task',
+      click: () => {
+        console.log('Add task clicked');
+      }
+    }
+  ];
+
+const ctxMenu = Menu.buildFromTemplate(contextMenuTemplate);
 
 
 export function renderCalendar(date, selectedDate) {
@@ -59,30 +73,35 @@ export function renderCalendar(date, selectedDate) {
 
     allDays.forEach((day) => {
         day.addEventListener('click', () => {
-          const dayNum = parseInt(day.innerHTML);
-    
-          if (isNaN(dayNum)) {
-            return;
-          }
-    
-          if (selectedDate != null) {
-            selectedDate.classList.remove('selected');
-          }
-    
-          day.classList.add('selected');
-          selectedDate = day;
-        });
-      });
+            const dayNum = parseInt(day.innerHTML);
 
-      setTimeout(function () {
+            if (isNaN(dayNum)) {
+            return;
+            }
+
+            if (selectedDate != null) {
+            selectedDate.classList.remove('selected');
+            }
+
+            day.classList.add('selected');
+            selectedDate = day;
+        });
+
+        day.addEventListener('contextmenu', (event) =>{
+            event.preventDefault();
+
+            ctxMenu.popup();
+
+        });
+        });
+
+    setTimeout(function () {
         days.classList.remove("fade-enter-right");
         days.classList.remove("fade-enter-left");
         days.classList.remove("fade-enter-active");
-      }, 500);
-
-      body.classList.remove('is-changing');
+        body.classList.remove('is-changing');
+    }, 500);
 }
-
 
 export function prevMonthHandler(){
     const month = date.getMonth();
@@ -162,6 +181,9 @@ export function isSelected(date, selectedDate) {
     );
 }
 
+
+function createContextMenus(){
+}
 
 const months = [
     'January',

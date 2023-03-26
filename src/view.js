@@ -25,6 +25,7 @@ function renderHome () {
         nextBtn.addEventListener('click', () => {
             nextMonthHandler();
         });
+
     })
 
 }
@@ -47,6 +48,7 @@ function renderTasksPage () {
     })
 }
 
+window.addEventListener('load', renderHome)
 
 // consider condensing this or changing system for it
 const homeButton = document.getElementById("homeButton")
