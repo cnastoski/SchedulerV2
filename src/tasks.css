@@ -1,0 +1,19 @@
+.task{
+    color: black;
+    font-family: Dosis;
+    text-align: left;
+    padding-top: 5px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background-color 200ms, color 200ms;
+    border-radius: 4px;
+    margin: auto 80% auto auto;
+}
+/* <thing> + <thing> means an element directly after said element */
+.task + .task {
+    margin-top: 2%;
+}
+
+.task:hover{
+    box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.1);
+}
