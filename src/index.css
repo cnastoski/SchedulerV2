@@ -13,6 +13,7 @@ body {
   padding: 2rem;
   height: 100%;
   background-color: #a3afbd;
+  overflow: auto;
 }
 
 /* The sidebar menu */

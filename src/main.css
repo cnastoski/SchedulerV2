@@ -1,8 +1,4 @@
 /*calendar css */
-body{
-  overflow: auto;
-}
-
 body.is-changing {
   overflow-y: hidden;  /* hide the scrollbar when content is changing */
   overflow-x: hidden;
@@ -101,7 +97,7 @@ body.is-changing {
 
 /* Sweep animation */
 .fade-enter-active{
-  transition: transform 0.5s ease;
+  transition: transform 0.5s ease-in-out;
 }
 
 .fade-enter-right{

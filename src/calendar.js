@@ -79,10 +79,9 @@ export function renderCalendar(date, selectedDate) {
         days.classList.remove("fade-enter-left");
         days.classList.remove("fade-enter-active");
       }, 500);
-
       body.classList.remove('is-changing');
-}
 
+}
 
 export function prevMonthHandler(){
     const month = date.getMonth();
