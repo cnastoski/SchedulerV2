@@ -9,14 +9,14 @@ body.is-changing {
   background-image: linear-gradient(to bottom right, rgba(20,30,81), rgba(68,96,130));
   -webkit-box-shadow: 0 0 10px #292238;
   box-shadow: 0 0 10px #0f0c2f;
-  border-radius: 4px
+  border-radius: 4px;
 }
 
 #calendar{
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   grid-template-rows: repeat(6, 1fr);
-  height: 80vh;
+  height: 75vh;
 }
 
 .day{
@@ -42,6 +42,9 @@ body.is-changing {
   background-color: rgba(94, 111, 186, 0.852);
 }
 
+.prev-month, .next-month{
+  color: rgb(139, 136, 136);
+}
 
 #daynames{
   display: grid;
@@ -109,6 +112,35 @@ body.is-changing {
   transform: translateX(100%);
 }
 
-.prev-month, .next-month{
-  color: rgb(139, 136, 136);
+/*task context menu css */
+#task-menu{
+  background-color: white;
+  cursor: pointer;
+  opacity: 0.7;
+  border-radius: 3px;
+}
+
+.relative {
+  position: relative;
+}
+.absolute {
+  position: absolute;
+}
+.hidden {
+  /* The menu is hidden at first */
+  display: none;
+}
+
+.custom-ctx__item{
+  padding: 3px;
+  user-select: none;
+  border-radius: 3px;
+}
+
+.custom-ctx__item:hover{
+  background-color: aqua;
+}
+
+.custom-ctx__item:active{
+  background-color: aliceblue;
 }
