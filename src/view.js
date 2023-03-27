@@ -29,11 +29,15 @@ function renderHome () {
         document.addEventListener('click', function(element){
             //hide context menu if it is up
             const menu = document.getElementById("task-menu");
-            const isClickedOutside = !menu.contains(element.target);
-            if (isClickedOutside) {
-                // Hide the menu
-                menu.classList.add('hidden');
+            if (menu){
+                const isClickedOutside = !menu.contains(element.target);
+                if (isClickedOutside) {
+                    // Hide the menu
+                    menu.classList.add('hidden');
+                    document.removeEventListener("click", element);
+                }      
             }
+
         })
 
     })
