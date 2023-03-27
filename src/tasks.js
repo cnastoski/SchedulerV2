@@ -13,13 +13,16 @@ export function renderTasks() {
     // read tasks file, will most likely get replaced by database lookup
     // easy to port to database, both functions will be callbacks
     fs.readFile(path.resolve(__dirname, "tasks.json"), (err, data) => {
-        let html = ""
-        let arr = JSON.parse(data)
-        for (let i = 0; i < arr.length; i++) {
-            html += "<div class='task'>" + arr[i].name + "<div class='task-sub'>"
-                + arr[i].date + "</div></div>"
+        if (data.length !== 0) {
+            let html = ""
+            let arr = JSON.parse(data)
+            for (let i = 0; i < arr.length; i++) {
+                let date = new Date(arr[i].date)
+                html += "<div class='task'>" + arr[i].name + "<div class='task-sub'>"
+                    + date.toLocaleDateString("en-us", {timezone: "America/Detroit"}) + "</div></div>"
+            }
+            tasksBody.innerHTML = html
         }
-        tasksBody.innerHTML = html
 
         // these say "unused" but they are very much used!
         let sortableTasks = Sortable.create(tasksBody, {
@@ -29,10 +32,13 @@ export function renderTasks() {
         })
 
         document.getElementById("taskAddPageButton")
-            .addEventListener("click", taskPageTransition)
+            .addEventListener("click", transitionToAddTasks)
 
         document.getElementById("addTaskButton")
             .addEventListener("click", addTask)
+
+        document.getElementById("exitTasksAddPageButton")
+            .addEventListener("click", transitionFromAddTasks)
 
     })
 }
@@ -46,7 +52,7 @@ function saveTasks() {
 
         objects.push({
             "name" : text[0],
-            "date" : text[1]
+            "date" : Date.parse(text[1])
         })
     })
 
@@ -55,31 +61,42 @@ function saveTasks() {
     })
 }
 
-function taskPageTransition() {
+function transitionToAddTasks() {
     document.getElementById("tasksDisplay").classList.add("hidden")
 
     document.getElementById("addTasks").classList.remove("hidden")
     document.getElementById("addTasks").classList.add("visible")
 }
 
-function addTask() {
-    let form = document.forms["addTaskForm"]
-    if (form.elements["taskNameForm"].value === "") {
-        window.alert("Please provide a name for your task!")
-        return
-    }
-
-    let tasksBody = document.getElementById("tasks")
-    tasksBody.insertAdjacentHTML("afterbegin",
-        "<div class='task'>" + form.elements["taskNameForm"].value
-        + "<div class='task-sub'>"
-        + form.elements["taskDateForm"].valueAsDate + "</div></div>")
-
+function transitionFromAddTasks() {
     document.getElementById("addTasks").classList.remove("visible")
     document.getElementById("addTasks").classList.add("hidden")
 
     document.getElementById("tasksDisplay").classList.remove("hidden")
     document.getElementById("tasksDisplay").classList.add("visible")
+}
+
+function addTask() {
+    let form = document.forms["addTaskForm"]
+    if (form.elements["taskNameForm"].value === "" || form.elements["taskDateForm"].value === "") {
+        window.alert("Please provide details for your task!")
+        return
+    }
+
+    let taskName = form.elements["taskNameForm"].value
+    let taskDate = new Date(Date.parse(form.elements["taskDateForm"].value + "T00:00"))
+
+    let tasksBody = document.getElementById("tasks")
+    tasksBody.insertAdjacentHTML("afterbegin",
+        "<div class='task'>" + taskName
+        + "<div class='task-sub'>"
+        + taskDate.toLocaleDateString("en-us", {timezone: "America/Detroit"}) + "</div></div>")
+
+    transitionFromAddTasks()
+
+    form.reset()
+
+    saveTasks()
 
 }
 
