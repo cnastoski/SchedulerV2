@@ -1,7 +1,21 @@
 <!-- body of tasks page -->
 <div id="tasks-container">
   <h2>Tasks</h2>
-  <div id="tasks">
+  <div id="tasksDisplay">
+    <button id="taskAddPageButton">Add Task</button>
+    <div id="tasks">
 
+    </div>
+  </div>
+
+  <div id="addTasks" class="hidden">
+    <h1>Add Task</h1>
+    <form id="addTaskForm" action="#">
+      <p class="addTaskSub" >Task Name</p>
+      <input type="text" name="taskNameForm">
+      <p class="addTaskSub">Date of Task</p>
+      <input type="date" name="taskDateForm">
+      <input type="button" value="Add Task" id="addTaskButton">
+    </form>
   </div>
 </div>

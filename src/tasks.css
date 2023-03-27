@@ -17,3 +17,30 @@
 .task:hover{
     box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.1);
 }
+
+#tasks-container {
+    position: relative;
+}
+
+
+#tasksDisplay {
+    position: absolute;
+}
+
+#addTasks {
+    z-index: 0;
+}
+
+
+.visible {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 1s linear;
+    display: inline-block;
+}
+
+.hidden {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s 1s, opacity 1s linear;
+}

@@ -16,7 +16,7 @@ export function renderTasks() {
         let html = ""
         let arr = JSON.parse(data)
         for (let i = 0; i < arr.length; i++) {
-            html += "<div class='task' draggable='true'>" + arr[i].name + "<div class='task-sub'>"
+            html += "<div class='task'>" + arr[i].name + "<div class='task-sub'>"
                 + arr[i].date + "</div></div>"
         }
         tasksBody.innerHTML = html
@@ -27,6 +27,12 @@ export function renderTasks() {
                 saveTasks()
             }
         })
+
+        document.getElementById("taskAddPageButton")
+            .addEventListener("click", taskPageTransition)
+
+        document.getElementById("addTaskButton")
+            .addEventListener("click", addTask)
 
     })
 }
@@ -47,6 +53,34 @@ function saveTasks() {
     fs.writeFile('./src/tasks.json', JSON.stringify(objects), (err) =>{
         if (err) throw err
     })
+}
+
+function taskPageTransition() {
+    document.getElementById("tasksDisplay").classList.add("hidden")
+
+    document.getElementById("addTasks").classList.remove("hidden")
+    document.getElementById("addTasks").classList.add("visible")
+}
+
+function addTask() {
+    let form = document.forms["addTaskForm"]
+    if (form.elements["taskNameForm"].value === "") {
+        window.alert("Please provide a name for your task!")
+        return
+    }
+
+    let tasksBody = document.getElementById("tasks")
+    tasksBody.insertAdjacentHTML("afterbegin",
+        "<div class='task'>" + form.elements["taskNameForm"].value
+        + "<div class='task-sub'>"
+        + form.elements["taskDateForm"].valueAsDate + "</div></div>")
+
+    document.getElementById("addTasks").classList.remove("visible")
+    document.getElementById("addTasks").classList.add("hidden")
+
+    document.getElementById("tasksDisplay").classList.remove("hidden")
+    document.getElementById("tasksDisplay").classList.add("visible")
+
 }
 
 
