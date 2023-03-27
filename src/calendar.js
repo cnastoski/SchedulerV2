@@ -6,22 +6,10 @@ const body = document.querySelector('body');
 let selectedDate = null;
 const date = new Date();
 
-
-const contextMenuTemplate = [
-    {
-      label: 'Add task',
-      click: () => {
-        console.log('Add task clicked');
-      }
-    }
-  ];
-
-const ctxMenu = Menu.buildFromTemplate(contextMenuTemplate);
-
-
 export function renderCalendar(date, selectedDate) {
     const monthyear = document.querySelector("#monthyear");
     const days = document.querySelector("#calendar");
+    const menu = document.getElementById("task-menu");
 
     renderWeekdays();
  
@@ -87,11 +75,18 @@ export function renderCalendar(date, selectedDate) {
             selectedDate = day;
         });
 
-        day.addEventListener('contextmenu', (event) =>{
+        day.addEventListener('contextmenu', function (event){
             event.preventDefault();
 
-            ctxMenu.popup();
-
+            const x = event.clientX + 2;
+            const y = event.clientY;
+        
+            // Set the position for menu
+            menu.style.top = `${y}px`;
+            menu.style.left = `${x}px`;
+        
+            // Show the menu
+            menu.classList.remove('hidden');
         });
         });
 
@@ -135,6 +130,7 @@ export function nextMonthHandler(){
     renderCalendar(date);
 
     const days = document.querySelector("#calendar");
+
     days.classList.add("fade-enter-right");
     days.classList.add("fade-enter-active");
     body.classList.add('is-changing');
@@ -179,10 +175,6 @@ export function isSelected(date, selectedDate) {
     selectedMonth === date.getMonth() &&
     selectedYear === date.getFullYear()
     );
-}
-
-
-function createContextMenus(){
 }
 
 const months = [
